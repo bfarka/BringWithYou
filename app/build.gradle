@@ -1,6 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
+
+    jacoco {
+
+        version = '0.6.2.201302030002'
+    }
     compileSdkVersion 15
     buildToolsVersion "19.1.0"
 
@@ -15,6 +20,12 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug{
+            if(project.hasProperty("enableCoverage") && project.getProperty("enableCoverage") == true){
+                testCoverageEnabled true
+            }
+
         }
     }
 }
