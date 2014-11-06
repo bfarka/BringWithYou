@@ -12,4 +12,4 @@ before_script:
   - adb shell input keyevent 82 &
 
 
-script: ./gradlew build connectedCheck connectedAndroidTest -PcoverageEnabled=true
+script: ./gradlew build connectedCheck connectedAndroidTest coveralls -PcoverageEnabled=true
