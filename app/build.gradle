@@ -1,6 +1,12 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.github.kt3k.coveralls'
 
 android {
+
+    jacoco {
+
+        version = '0.6.2.201302030002'
+    }
     compileSdkVersion 15
     buildToolsVersion "19.1.0"
 
@@ -16,9 +22,17 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug{
+            if(project.hasProperty("enableCoverage") && project.getProperty("enableCoverage") == true){
+                testCoverageEnabled true
+            }
+
+        }
     }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.google.guava:guava:18.0'
+    androidTestCompile 'junit:junit:4.12-beta-2'
 }
