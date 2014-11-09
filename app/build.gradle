@@ -3,10 +3,7 @@ apply plugin: 'com.github.kt3k.coveralls'
 
 android {
 
-    jacoco {
 
-        version = '0.6.2.201302030002'
-    }
     compileSdkVersion 15
     buildToolsVersion "19.1.0"
 
@@ -23,7 +20,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug{
+            println "enableCoverage =  ${project.hasProperty("enableCoverage") && project.getProperty("enableCoverage")}"
+            testCoverageEnabled (project.hasProperty("enableCoverage") && project.getProperty("enableCoverage"))
             if(project.hasProperty("enableCoverage") && project.getProperty("enableCoverage") == true){
+                println "coverage"
                 testCoverageEnabled true
             }
 
