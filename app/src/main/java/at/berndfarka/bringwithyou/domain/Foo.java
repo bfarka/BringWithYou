@@ -1,4 +1,4 @@
 package at.berndfarka.bringwithyou.domain;
 
-public class Foo {
+public class Foo extends ListItem {
 }
